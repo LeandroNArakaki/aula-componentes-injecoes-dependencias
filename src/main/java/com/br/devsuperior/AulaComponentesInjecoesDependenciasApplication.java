@@ -29,23 +29,30 @@ public class AulaComponentesInjecoesDependenciasApplication implements CommandLi
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println("-----------------------Dados do pedido-----------------------");
-            System.out.println("codigo: ");
-            Integer codigo = sc.nextInt();
-            System.out.println("valor basico: ");
-            Double valorBasico = sc.nextDouble();
-            System.out.println("porcentagem do desconto: ");
-            Double porcentagemDesconto = sc.nextDouble();
+        try {
+            for (int i = 0; i < 3; i++) {
+                System.out.println("-----------------------Dados do pedido-----------------------");
 
+                System.out.println("codigo: ");
+                Integer codigo = sc.nextInt();
+                System.out.println("valor basico: ");
+                Double valorBasico = sc.nextDouble();
+                System.out.println("porcentagem do desconto: ");
+                Double porcentagemDesconto = sc.nextDouble();
 
-            Order order = new Order(codigo, valorBasico, porcentagemDesconto);
-            System.out.println("-----------------------SAÍDA-----------------------");
-            System.out.println("Pedido código: " + order.getCode());
-            System.out.println("Valor total: R$ "+ orderService.total(order));
+                Order order = new Order(codigo, valorBasico, porcentagemDesconto);
+                System.out.println("-----------------------SAÍDA-----------------------");
+                System.out.println("Pedido código: " + order.getCode());
+                System.out.println("Valor total: R$ " + orderService.total(order));
 
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sc.close();
         }
-        sc.close();
 
+        System.exit(0);
     }
 }
